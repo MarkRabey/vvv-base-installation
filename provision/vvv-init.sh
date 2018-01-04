@@ -44,12 +44,12 @@ fi
 
 # Install WordPress Plugins
 echo "\nInstalling plugins..."
-wp plugin install wordpress-importer --activate
-wp plugin install developer
-wp plugin install query-monitor --activate
-wp plugin install wordpress-seo --activate
-wp plugin install admin-menu-editor --activate
-wp plugin install advanced-custom-fields --activate
+noroot wp plugin install wordpress-importer --activate
+noroot wp plugin install developer
+noroot wp plugin install query-monitor --activate
+noroot wp plugin install wordpress-seo --activate
+noroot wp plugin install admin-menu-editor --activate
+noroot wp plugin install advanced-custom-fields --activate
 echo "\nPlugins installed"
 
 cp -f "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf.tmpl" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
