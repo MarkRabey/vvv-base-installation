@@ -16,11 +16,11 @@ mysql -u root --password=root -e "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO wp@loc
 echo -e "\nDB operations complete.\n\n"
 
 # Create Nginx log files
-echo "Creating Nginx log files"
+echo -e "Creating Nginx log files"
 mkdir -p ${VVV_PATH_TO_SITE}/log
 touch ${VVV_PATH_TO_SITE}/log/error.log
 touch ${VVV_PATH_TO_SITE}/log/access.log
-echo "\nLog files created\n\n"
+echo -e "\nLog files created\n\n"
 
 # Install and configure WordPress
 if [[ ! -f "${VVV_PATH_TO_SITE}/publc_html/wp-load.php" ]]; then
@@ -43,14 +43,14 @@ else
 fi
 
 # Install WordPress Plugins
-echo "\nInstalling plugins..."
+echo -e "\nInstalling plugins..."
 noroot wp plugin install wordpress-importer --activate
 noroot wp plugin install developer
 noroot wp plugin install query-monitor --activate
 noroot wp plugin install wordpress-seo --activate
 noroot wp plugin install admin-menu-editor --activate
 noroot wp plugin install advanced-custom-fields --activate
-echo "\nPlugins installed"
+echo -e "\nPlugins installed"
 
 cp -f "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf.tmpl" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
-sed -i "s#{{DOMAINS_HERE}}#${DOMAINS}" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
+sed -i "s#{{DOMAINS_HERE}}#${DOMAINS}#" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
